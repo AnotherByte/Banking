@@ -17,62 +17,94 @@ namespace Banking.BL
 
         public double LastDepositAmmount
         {
-            get { return _mDepositList[_mDepositList.Count - 1].TransactionAmmount ; }
+            get { return LastTransaction(TransactionType.Deposit).TransactionAmmount; }
         }
+
 
         public DateTime LastDepositDate
         {
-            get { return _mDepositList[_mDepositList.Count - 1].TransactionDate; }
+            get { return LastTransaction(TransactionType.Deposit).TransactionDate; }
         }
 
 
         public double LastWithdrawalAmmount
         {
-            get { return _mWithdrawalList[_mWithdrawalList.Count - 1].TransactionAmmount; }
+            get { return LastTransaction(TransactionType.Withdrawal).TransactionAmmount; }
         }
 
         public DateTime LastWithdrawalDate
         {
-            get { return _mWithdrawalList[_mWithdrawalList.Count - 1].TransactionDate; }
+            get { return LastTransaction(TransactionType.Withdrawal).TransactionDate; }
         }
 
 
-        private List<CTransaction> _mDepositList;
-        public List<CTransaction> GetDeposits()
+        private List<CTransaction> _mTransactionList;
+        public List<CTransaction> Transactions
         {
-            return _mDepositList;
+            get { return _mTransactionList; }
         }
 
-        private List<CTransaction> _mWithdrawalList;
-        public List<CTransaction> GetWithdrawals()
+        public List<CTransaction> Deposits
         {
-            return _mWithdrawalList;
+            get { return SeperateTransactions(TransactionType.Deposit); }
+        }
+
+        public List<CTransaction> Withdrawals
+        {
+            get { return SeperateTransactions(TransactionType.Withdrawal); }
         }
 
 
         public CCustomer(int vID, string vSSN, string vFirst, string vLast, DateTime vDOB)
         {
-            ID = vID;
+            ID = Guid.NewGuid();
+            CustomerID = vID;
             SSN = vSSN;
             FirstName = vFirst;
             LastName = vLast;
             BirthDate = vDOB;
 
-            _mDepositList = new List<CTransaction>();
-            _mWithdrawalList = new List<CTransaction>();
+            _mTransactionList = new List<CTransaction>();
 
         }
 
         public void AddTransaction(CTransaction oTransaction)
         {
-            if (oTransaction.TransactionType == TransactionType.Deposit)
+            _mTransactionList.Add(oTransaction);
+        }
+
+
+        private CTransaction LastTransaction(TransactionType oTransType)
+        {
+            CTransaction oLastTrans = new CTransaction();
+            DateTime oLastDate = new DateTime();
+
+            foreach (CTransaction oTrans in _mTransactionList)
             {
-                _mDepositList.Add(oTransaction);
+                if (oTrans.TransactionType == oTransType)
+                {
+                    if (oTrans.TransactionDate > oLastDate)
+                    {
+                        oLastDate = oTrans.TransactionDate;
+                        oLastTrans = oTrans;
+                    }
+                }
             }
-            else
+
+            return oLastTrans;
+        }
+
+        private List<CTransaction> SeperateTransactions(TransactionType oTransactionType)
+        {
+            List<CTransaction> oSepTrans = new List<CTransaction>();
+
+            foreach (CTransaction oTrans in Transactions)
             {
-                _mWithdrawalList.Add(oTransaction);
+                oSepTrans.Add(oTrans);
             }
+
+            oSepTrans.RemoveAll(item => item.TransactionType != oTransactionType);
+            return oSepTrans;
         }
 
     }

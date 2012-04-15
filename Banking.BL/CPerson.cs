@@ -7,8 +7,8 @@ namespace Banking.BL
 {
     public class CPerson
     {
-        private int _miID;
-        public int ID
+        private Guid _miID;
+        public Guid ID
         {
             get { return _miID; }
             set { _miID = value; }

@@ -41,13 +41,11 @@ namespace Banking.UI
                 txtSSN.Text = oCustomer.SSN;
                 dtpBirthDate.Value = oCustomer.BirthDate;
 
-                PopulateDGVs(oCustomer.GetDeposits(), oCustomer.GetWithdrawals());
+                PopulateDGVs(oCustomer.Deposits, oCustomer.Withdrawals);
+
+                //lblDeposits.Text = string.Format("{0} - {1}", oCustomer.LastDepositDate, oCustomer.LastDepositAmmount);
+                //lblWithdrawals.Text = string.Format("{0} - {1}", oCustomer.LastWithdrawalDate, oCustomer.LastWithdrawalAmmount);
             }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -67,6 +65,12 @@ namespace Banking.UI
 
             dgvDeposits.DataSource = Deposits;
             dgvWithdrawals.DataSource = Withdrawals;
+
+            dgvDeposits.Columns["TransactionType"].Visible = false;
+            dgvWithdrawals.Columns["TransactionType"].Visible = false;
+
+            dgvDeposits.Columns["TransactionAmmount"].DefaultCellStyle.Format = "c";
+            dgvWithdrawals.Columns["TransactionAmmount"].DefaultCellStyle.Format = "c";
         }
     }
 }
