@@ -20,3 +20,5 @@ C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\obj\x86\Debug\Bank
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\obj\x86\Debug\Banking.UI.Properties.Resources.resources
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\bin\Debug\Banking.DL.dll
+C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.UI\bin\Debug\Banking.DL.pdb

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D7758A8F-7E30-40C6-90DF-80334BA93180}</ProjectGuid>
+    <ProjectGuid>{AF6F0064-233D-4687-ACBF-C5903EB3CC48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Banking.BL</RootNamespace>
-    <AssemblyName>Banking.BL</AssemblyName>
+    <RootNamespace>Banking.DL</RootNamespace>
+    <AssemblyName>Banking.DL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,29 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CCustomer.cs" />
-    <Compile Include="CCustomers.cs" />
-    <Compile Include="CPerson.cs" />
-    <Compile Include="CTransaction.cs" />
+    <Compile Include="CFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Banking.DL\Banking.DL.csproj">
-      <Project>{AF6F0064-233D-4687-ACBF-C5903EB3CC48}</Project>
-      <Name>Banking.DL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,8 +7,8 @@ namespace Banking.BL
 {
     public class CPerson
     {
-        private int _miID;
-        public int ID
+        private Guid _miID;
+        public Guid ID
         {
             get { return _miID; }
             set { _miID = value; }
@@ -49,7 +49,15 @@ namespace Banking.BL
 
         public int Age
         {
-            get { return DateTime.Today.Year - _mBirthDate.Year; }
+            get 
+            {
+                int age = DateTime.Today.Year - _mBirthDate.Year;
+                if (_mBirthDate > DateTime.Today.AddYears(-age))
+                {
+                    age--;
+                }
+                return age;
+            }
         }
     }
 }

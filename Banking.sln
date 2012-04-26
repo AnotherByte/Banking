@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.UI", "Banking.UI\Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.BL", "Banking.BL\Banking.BL.csproj", "{D7758A8F-7E30-40C6-90DF-80334BA93180}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.DL", "Banking.DL\Banking.DL.csproj", "{AF6F0064-233D-4687-ACBF-C5903EB3CC48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{D7758A8F-7E30-40C6-90DF-80334BA93180}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D7758A8F-7E30-40C6-90DF-80334BA93180}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D7758A8F-7E30-40C6-90DF-80334BA93180}.Release|x86.ActiveCfg = Release|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AF6F0064-233D-4687-ACBF-C5903EB3CC48}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

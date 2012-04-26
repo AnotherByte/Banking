@@ -8,3 +8,6 @@ C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\bin\Debug\Banking.
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\obj\Debug\Banking.BL.dll
 C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\obj\Debug\Banking.BL.pdb
+C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\bin\Debug\Banking.BL.dll.config
+C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\bin\Debug\Banking.DL.dll
+C:\Users\Magnum\Documents\Programming - C#\Banking\Banking.BL\bin\Debug\Banking.DL.pdb

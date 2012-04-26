@@ -7,73 +7,113 @@ namespace Banking.BL
 {
     public class CCustomer : CPerson
     {
-        private int _miCustomerID;
-        public int CustomerID
-        {
-            get { return _miCustomerID; }
-            set { _miCustomerID = value; }
-        }
+        #region Properties
 
+        private string _mCustomerID;
+        public string CustomerID
+        {
+            get { return _mCustomerID; }
+            set { _mCustomerID = value; }
+        }
 
         public double LastDepositAmmount
         {
-            get { return _mDepositList[_mDepositList.Count - 1].TransactionAmmount ; }
+            get { return LastTransaction(TransactionType.Deposit).TransactionAmmount; }
         }
 
         public DateTime LastDepositDate
         {
-            get { return _mDepositList[_mDepositList.Count - 1].TransactionDate; }
+            get { return LastTransaction(TransactionType.Deposit).TransactionDate; }
         }
-
 
         public double LastWithdrawalAmmount
         {
-            get { return _mWithdrawalList[_mWithdrawalList.Count - 1].TransactionAmmount; }
+            get { return LastTransaction(TransactionType.Withdrawal).TransactionAmmount; }
         }
 
         public DateTime LastWithdrawalDate
         {
-            get { return _mWithdrawalList[_mWithdrawalList.Count - 1].TransactionDate; }
+            get { return LastTransaction(TransactionType.Withdrawal).TransactionDate; }
         }
 
 
-        private List<CTransaction> _mDepositList;
-        public List<CTransaction> GetDeposits()
+        private List<CTransaction> _mTransactionList;
+        public List<CTransaction> Transactions
         {
-            return _mDepositList;
+            get { return _mTransactionList; }
         }
 
-        private List<CTransaction> _mWithdrawalList;
-        public List<CTransaction> GetWithdrawals()
+        #endregion
+
+        #region Constructors
+
+        public CCustomer()
         {
-            return _mWithdrawalList;
+            _mTransactionList = new List<CTransaction>();
         }
 
-
-        public CCustomer(int vID, string vSSN, string vFirst, string vLast, DateTime vDOB)
+        public CCustomer(string vID, string vSSN, string vFirst, string vLast, DateTime vDOB)
         {
-            ID = vID;
+            ID = Guid.NewGuid();
+            CustomerID = vID;
             SSN = vSSN;
             FirstName = vFirst;
             LastName = vLast;
             BirthDate = vDOB;
 
-            _mDepositList = new List<CTransaction>();
-            _mWithdrawalList = new List<CTransaction>();
+            _mTransactionList = new List<CTransaction>();
 
         }
+
+        #endregion
+
+        #region Methods
 
         public void AddTransaction(CTransaction oTransaction)
         {
-            if (oTransaction.TransactionType == TransactionType.Deposit)
-            {
-                _mDepositList.Add(oTransaction);
-            }
-            else
-            {
-                _mWithdrawalList.Add(oTransaction);
-            }
+            _mTransactionList.Add(oTransaction);
         }
+
+        public List<CTransaction> GetTransactions(TransactionType oType)
+        {
+            return SeperateTransactions(oType);
+        }
+
+
+        public CTransaction LastTransaction(TransactionType oTransType)
+        {
+            CTransaction oLastTrans = new CTransaction();
+            DateTime oLastDate = new DateTime();
+
+            foreach (CTransaction oTrans in _mTransactionList)
+            {
+                if (oTrans.TransactionType == oTransType)
+                {
+                    if (oTrans.TransactionDate > oLastDate)
+                    {
+                        oLastDate = oTrans.TransactionDate;
+                        oLastTrans = oTrans;
+                    }
+                }
+            }
+
+            return oLastTrans;
+        }
+
+        private List<CTransaction> SeperateTransactions(TransactionType oTransactionType)
+        {
+            List<CTransaction> oSepTrans = new List<CTransaction>();
+
+            foreach (CTransaction oTrans in _mTransactionList)
+            {
+                oSepTrans.Add(oTrans);
+            }
+
+            oSepTrans.RemoveAll(item => item.TransactionType != oTransactionType);
+            return oSepTrans;
+        }
+
+        #endregion
 
     }
 }
